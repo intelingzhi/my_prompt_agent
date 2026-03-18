@@ -63,11 +63,32 @@ export default function Home() {
     }
   };
 
-  const handleCopy = (text: string, key: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(key);
-    setTimeout(() => setCopied(null), 2000);
+  const handleCopy = async (text: string, key: string) => {
+    try {
+      // 现代安全环境（https 或 localhost）
+      if (typeof navigator !== "undefined" && navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        // 非安全上下文的降级方案
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-9999px";
+        textArea.style.top = "0";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textArea);
+      }
+
+      setCopied(key);
+      setTimeout(() => setCopied(null), 2000);
+    } catch (err) {
+      console.error("复制失败", err);
+    }
   };
+
 
   return (
     <main className="max-w-5xl mx-auto px-4 py-12">
