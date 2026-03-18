@@ -140,7 +140,7 @@ export default function Home() {
 
       {/* Result Cards */}
       {result && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="flex flex-col gap-5 mt-6">
           {CARD_CONFIG.map((card) => (
             <div
               key={card.key}
