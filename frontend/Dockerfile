@@ -12,6 +12,9 @@ RUN npm ci
 # 复制源代码
 COPY . .
 
+# 设置环境变量
+ENV NEXT_PUBLIC_API_URL=http://192.168.0.126:8000
+
 # 构建 Next.js 应用
 RUN npm run build
 
