@@ -25,6 +25,7 @@ env/
 
 # uvicorn / FastAPI 运行产物
 *.sqlite3
+config.yaml
 
 # ---- Node / 前端（frontend/）----
 node_modules/

@@ -1,7 +1,7 @@
 llm:
   base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
   model_name: "MiniMax-M2.5"
-  api_key: "sk-431459fdfb5f46dba3c851f885a08984"
+  api_key: "sk-7c9d3a357ea24ca1959c0b053037e9c0"
 
 server:
   host: "127.0.0.1"
